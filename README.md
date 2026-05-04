@@ -102,7 +102,7 @@ Presenter - презентер содержит основную логику п
 
 Интерфейс для учета товаров в приложении
 ```
-interface Product {
+interface IProduct {
   уникальный номер товара
   id: string;
 
@@ -125,7 +125,7 @@ interface Product {
 Интерфейс данных о покупателе
 
 ```
-interface Customer {
+interface IBuyer {
   способ оплаты - карта, наличные или отсутствует
   payment: "card" | "cash" | "";
 
@@ -141,3 +141,42 @@ interface Customer {
 ```
 
 #### Модели данных
+
+Классы
+```
+class Catalog {
+
+  constructor() {
+    private itemsList: IProduct[] = [] - // массив товаров
+    private selectedItem: IProduct - // выбранный товар
+  }
+
+  setItem(item: IProduct) - сохранение товара для подробного отображения
+  getItem(): IProduct - получение товара для подробного отображения
+  getItemFromID(itemID: string): IProduct - получение одного товара по его ID
+  getItemList(): IProduct[] - получение массива товаров
+  setItemList(items: IProduct[]) - сохранение массива товаров
+}
+```
+
+```
+class Basket {
+  constructor()
+
+  getItemList() - получение массива товаров в корзине
+  removeBasket() - очистка корзины
+  setItemBasket() - добавление товара в корзину
+  removeItemBasket() - удаление товара из корзины
+  getPriceList() - получение стоимости всех товаров в корзине
+  getCountItem() - получение количества товаров в корзине
+  checkItemFromID() - проверка наличия товара в корзине по его ID
+}
+```
+
+```
+class Buyer {
+  constructor()
+
+  getItemList()
+}
+```
