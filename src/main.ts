@@ -41,3 +41,5 @@ checkClassBasket.clearBasket();
 console.log('Товары в корзине:', checkClassBasket.getItemList());
 
 /* Проверка класса Buyer */
+
+checkClassBuyer
