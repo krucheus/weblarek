@@ -146,10 +146,10 @@ interface IBuyer {
 ```
 class Catalog {
 
-  constructor() {
-    private itemsList: IProduct[] = [] - // массив товаров
-    private selectedItem: IProduct - // выбранный товар
-  }
+  private itemsList: IProduct[] = [] - // массив товаров
+  private selectedItem: IProduct - // выбранный товар
+
+  constructor() {}
 
   setItem(item: IProduct) - сохранение товара для подробного отображения
   getItem(): IProduct - получение товара для подробного отображения
@@ -175,8 +175,19 @@ class Basket {
 
 ```
 class Buyer {
+  private payment: Payment - вид оплаты
+  private address: string - данные об адресе доставки
+  private email: string - электронная почта покупателя
+  private phone: string - номер телефона покупателя
+
   constructor()
 
-  getItemList()
+  saveUserData() - сохранение данных пользователя в модели. Можно сохранить выборочные данные (одно значение)
+  resetUserData() - очистка данных покупателя
+  getUserData() - получение данных покупателя
+  checkUserData() - валидация данных пользователя
+  
+
+
 }
 ```
