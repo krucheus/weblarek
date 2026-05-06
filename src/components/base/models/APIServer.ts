@@ -1,10 +1,9 @@
-import { IResultOrder, IOrder, IProduct } from '../../../types'
-import { Api } from '../Api'
+import { IResultOrder, IOrder, IProduct, IApi } from '../../../types'
 
 export class APIServer {
-  api: Api
+  api: IApi
 
-  constructor(api: Api) {
+  constructor(api: IApi) {
     this.api = api
   }
 

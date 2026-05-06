@@ -3,10 +3,10 @@ import { Basket } from './components/base/models/basket';
 import { Catalog } from './components/base/models/catalog';
 import { Buyer } from './components/base/models/buyer';
 import { apiProducts } from './utils/data';
-import { API_URL, CDN_URL } from './utils/constants'
+import { API_URL } from './utils/constants'
 import { IProduct } from './types';
 import { Api } from './components/base/Api';
-import { APIServer } from './components/base/models/APIServer.ts';
+import { APIServer } from './components/base/models/APIServer';
 
 const checkClassCatalog = new Catalog()
 const checkClassBasket = new Basket()
