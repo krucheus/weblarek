@@ -21,6 +21,16 @@ export interface IProduct {
     description: string;
 }
 
+export interface IResultOrder {
+  id: string;
+  total: number;
+}
+
+export interface IOrder extends IBuyer {
+  items: string[];
+  total: number;
+}
+
 export type validationErrors = {
   payment?: string;
   address?: string;
