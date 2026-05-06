@@ -164,7 +164,7 @@ class Basket {
   constructor()
 
   getItemList() - получение массива товаров в корзине
-  removeBasket() - очистка корзины
+  clearBasket() - очистка корзины
   setItemBasket() - добавление товара в корзину
   removeItemBasket() - удаление товара из корзины
   getPriceList() - получение стоимости всех товаров в корзине
@@ -175,7 +175,7 @@ class Basket {
 
 ```
 class Buyer {
-  private payment: Payment - вид оплаты
+  private payment: "card" | "cash" | "" - вид оплаты
   private address: string - данные об адресе доставки
   private email: string - электронная почта покупателя
   private phone: string - номер телефона покупателя
@@ -186,8 +186,9 @@ class Buyer {
   resetUserData() - очистка данных покупателя
   getUserData() - получение данных покупателя
   checkUserData() - валидация данных пользователя
-  
-
-
 }
 ```
+
+#### Слой коммуникации
+
+Класс Api для выполнения запроса на сервер и получения объекта с массивом товаров

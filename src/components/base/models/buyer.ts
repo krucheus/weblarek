@@ -1,11 +1,4 @@
-import { IBuyer } from "../../../types";
-
-export type validationErrors = {
-  payment?: string;
-  address?: string;
-  email?: string;
-  phone?: string;
-}
+import { IBuyer, validationErrors } from "../../../types";
 
 export class Buyer {
   private payment: "card" | "cash" | "" = "";

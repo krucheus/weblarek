@@ -20,3 +20,10 @@ export interface IProduct {
     price: number | null;
     description: string;
 }
+
+export type validationErrors = {
+  payment?: string;
+  address?: string;
+  email?: string;
+  phone?: string;
+}
