@@ -100,7 +100,7 @@ Presenter - презентер содержит основную логику п
 
 #### Данные
 
-Интерфейс для учета товаров в приложении
+**Интерфейс для учета товаров в приложении**
 ```
 interface IProduct {
   уникальный номер товара
@@ -122,7 +122,7 @@ interface IProduct {
   description: string;
 }
 ```
-Интерфейс данных о покупателе
+**Интерфейс данных о покупателе**
 
 ```
 interface IBuyer {
@@ -140,8 +140,9 @@ interface IBuyer {
 }
 ```
 
-Интерфейс IOrder 
+**Интерфейс IOrder**
 
+```
 interface IOrder extends IBuyer {
   поле, содержащее в себе массив ID товаров в заказе
   items: string[]
@@ -149,13 +150,14 @@ interface IOrder extends IBuyer {
   количество товаров в заказе
   total: number
 }
+```
 
-Тип вида оплаты
+**Тип вида оплаты**
 
 ```
 type Payment = 'card' | 'cash' - Тип, описывающий способ оплаты при заказе
 ```
-Тип validationErrors
+**Тип validationErrors**
 
 ```
 type validationErrors = Partial<Record<keyof IBuyer, string>> - тип, содержащий поле интерфейса IBuyer в качестве ключа и строку, сообщающую о причине непройденной валидации
@@ -164,7 +166,7 @@ type validationErrors = Partial<Record<keyof IBuyer, string>> - тип, соде
 
 #### Модели данных
 
-Классы
+**Классы**
 ```
 class Catalog {
 
