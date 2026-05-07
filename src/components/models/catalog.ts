@@ -1,10 +1,8 @@
-import { IProduct } from "../../../types"
+import { IProduct } from "../../types"
 
 export class Catalog {
   private itemsList: IProduct[] = []
   private selectedItem: IProduct | null = null
-
-  constructor() {}
 
   setItem(item: IProduct): void {
     this.selectedItem = item

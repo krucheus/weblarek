@@ -1,15 +1,15 @@
-import { IResultOrder, IOrder, IProduct, IApi } from '../../../types'
+import { IResultOrder, IOrder, IApi, IItemResponse } from '../../types'
 
 export class APIServer {
-  api: IApi
+  private api: IApi
 
   constructor(api: IApi) {
     this.api = api
   }
 
-  async getProducts(): Promise<IProduct[]> {
-    const data = await this.api.get<{ items: IProduct[] }>(`/product`)
-    return data.items
+  async getProducts(): Promise<IItemResponse> {
+    const data = await this.api.get<IItemResponse>(`/product`)
+    return data
   }
   async postOrder(order: IOrder): Promise<IResultOrder> {
     const response = await this.api.post<IResultOrder>(

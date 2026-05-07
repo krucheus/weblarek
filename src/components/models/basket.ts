@@ -1,9 +1,7 @@
-import { IProduct } from "../../../types"
+import { IProduct } from "../../types"
 
 export class Basket {
   private listItems: IProduct[] = []
-
-  constructor() {}
 
   getItemList(): IProduct[] {
     return this.listItems
@@ -14,7 +12,7 @@ export class Basket {
   }
 
   setItemBasket(item: IProduct) {
-    if (!this.checkItemFromID(item.id)) {
+    if (!this.checkItemByID(item.id)) {
       this.listItems.push(item)
     }
   }
@@ -34,7 +32,7 @@ export class Basket {
     return this.listItems.length
   }
 
-  checkItemFromID(itemID: string): boolean {
+  checkItemByID(itemID: string): boolean {
     return this.listItems.some(item => item.id == itemID)
   }
 

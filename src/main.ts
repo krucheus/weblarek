@@ -1,12 +1,12 @@
 import './scss/styles.scss';
-import { Basket } from './components/base/models/basket';
-import { Catalog } from './components/base/models/catalog';
-import { Buyer } from './components/base/models/buyer';
+import { Basket } from './components/models/basket';
+import { Catalog } from './components/models/catalog';
+import { Buyer } from './components/models/buyer';
 import { apiProducts } from './utils/data';
 import { API_URL } from './utils/constants'
-import { IProduct } from './types';
+import { IItemResponse, IProduct } from './types';
 import { Api } from './components/base/Api';
-import { APIServer } from './components/base/models/APIServer';
+import { APIServer } from './components/models/APIServer';
 
 const checkClassCatalog = new Catalog()
 const checkClassBasket = new Basket()
@@ -66,10 +66,13 @@ const api = new Api(API_URL);
 const apiServer = new APIServer(api);
 
 apiServer.getProducts()
-  .then((products: IProduct[]) => {
-    checkClassCatalog.setItemList(products);
+  .then((products: IItemResponse) => {
+    checkClassCatalog.setItemList(products.items);
 
     console.log('Товары из каталога:', checkClassCatalog.getItemList());
+  })
+  .catch(error => {
+    console.log('Ошибка про получении товаров из каталога', error)
   });
 
 

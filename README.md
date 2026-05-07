@@ -140,6 +140,28 @@ interface IBuyer {
 }
 ```
 
+Интерфейс IOrder 
+
+interface IOrder extends IBuyer {
+  поле, содержащее в себе массив ID товаров в заказе
+  items: string[]
+
+  количество товаров в заказе
+  total: number
+}
+
+Тип вида оплаты
+
+```
+type Payment = 'card' | 'cash' - Тип, описывающий способ оплаты при заказе
+```
+Тип validationErrors
+
+```
+type validationErrors = Partial<Record<keyof IBuyer, string>> - тип, содержащий поле интерфейса IBuyer в качестве ключа и строку, сообщающую о причине непройденной валидации
+```
+
+
 #### Модели данных
 
 Классы
@@ -148,8 +170,6 @@ class Catalog {
 
   private itemsList: IProduct[] = [] - // массив товаров
   private selectedItem: IProduct - // выбранный товар
-
-  constructor() {}
 
   setItem(item: IProduct) - сохранение товара для подробного отображения
   getItem(): IProduct - получение товара для подробного отображения
@@ -161,7 +181,6 @@ class Catalog {
 
 ```
 class Basket {
-  constructor()
 
   getItemList() - получение массива товаров в корзине
   clearBasket() - очистка корзины
@@ -169,7 +188,7 @@ class Basket {
   removeItemBasket() - удаление товара из корзины
   getPriceList() - получение стоимости всех товаров в корзине
   getCountItem() - получение количества товаров в корзине
-  checkItemFromID() - проверка наличия товара в корзине по его ID
+  checkItemByID() - проверка наличия товара в корзине по его ID
 }
 ```
 
@@ -179,8 +198,6 @@ class Buyer {
   private address: string - данные об адресе доставки
   private email: string - электронная почта покупателя
   private phone: string - номер телефона покупателя
-
-  constructor()
 
   saveUserData() - сохранение данных пользователя в модели. Можно сохранить выборочные данные (одно значение)
   resetUserData() - очистка данных покупателя

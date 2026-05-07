@@ -5,8 +5,10 @@ export interface IApi {
     post<T extends object>(uri: string, data: object, method?: ApiPostMethods): Promise<T>;
 }
 
+export type Payment = 'card' | 'cash';
+
 export interface IBuyer {
-    payment: "card" | "cash" | "";
+    payment: Payment | null;
     address: string;
     email: string;
     phone: string;
@@ -31,9 +33,9 @@ export interface IOrder extends IBuyer {
   total: number;
 }
 
-export type validationErrors = {
-  payment?: string;
-  address?: string;
-  email?: string;
-  phone?: string;
+export interface IItemResponse {
+  total: number;
+  items: IProduct[];
 }
+
+export type validationErrors = Partial<Record<keyof IBuyer, string>>

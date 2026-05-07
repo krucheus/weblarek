@@ -1,22 +1,20 @@
-import { IBuyer, validationErrors } from "../../../types";
+import { Payment, IBuyer, validationErrors } from "../../types";
 
 export class Buyer {
-  private payment: "card" | "cash" | "" = "";
+  private payment: Payment | null = null;
   private address: string = '';
   private email: string = ''
   private phone: string = ''
 
-  constructor() {}
-
-  saveUserData(data: IBuyer) {
-    this.payment = data.payment
-    this.address = data.address
-    this.email = data.email
-    this.phone = data.phone
+  saveUserData(data: Partial<IBuyer>) { 
+    if (data.payment) this.payment = data.payment;
+    if (data.address !== undefined) this.address = data.address;
+    if (data.email !== undefined) this.email = data.email
+    if (data.phone !== undefined) this.phone = data.phone
   }
 
   resetUserData() {
-    this.payment = '';
+    this.payment = null;
     this.address = '';
     this.email = '';
     this.phone = '';
