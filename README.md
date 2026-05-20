@@ -222,3 +222,163 @@ class APIServer {
   async postOrder() - метод размещения заказа на сервере
 }
 ```
+
+#### Слой представления (View)
+
+```
+class ViewHeader {
+  constructor(events: IEvents, container: HTMLElement)
+
+  events: IEvents - события-слушатели
+  container: HTMLElement - DOM-элемент компонента
+  counterElement: HTMLElement - счетчик количества товаров в корзине
+  basketButton: HTMLButtonElement - ссылка на кнопку, открывающую корзину
+
+  set counter(value: number) - сеттер, отображающий количество товаров в корзине возле иконки
+}
+```
+
+```
+class ViewGallery {
+  constructor(events: IEvents, container: HTMLElement)
+
+  events: IEvents - события-слушатели
+  container: HTMLElement - DOM-элемент компонента
+  catalogElement: HTMLElement - каталог товаров
+
+  set catalog(items: HTMLElement[]) - сеттер, отображающий каталог (список) товаров на странице
+}
+```
+
+```
+class ViewModal {
+  constructor(events: IEvents, container: HTMLElement)
+
+  events: IEvents - события-слушатели
+  container: HTMLElement - DOM-элемент компонента
+  contentElement: HTMLElement - контент модального окна
+  closeButton: HTMLButtonElement - поле класса со ссылкой на кнопку, закрывающее модальное окно
+
+  set content(item: HTMLElement | '') - сеттер, устанавливающий контент модального окна
+  close() - метод для закрытия модального окна
+}
+```
+
+```
+class Card {
+  constructor(container: HTMLElement)
+
+  container: HTMLElement - DOM-элемент компонента
+  titleElement: HTMLElement - DOM-элемент названия карточки товара
+  priceElement: HTMLElement - DOM-элемент цены в карточке товара
+
+  set title(value: string) - сеттер, устанавливающий название товара
+  set price(value: string) - сеттер, устанавливающий цену товара
+}
+```
+
+```
+class CardBasket {
+  constructor(events: IEvents, container: HTMLElement, actions?: ICardActions)
+
+  events: IEvents - события-слушатели
+  container: HTMLElement - DOM-элемент компонента
+  actions?: ICardActions
+  deleteButtonElement: HTMLButtonElement - DOM-элемент кнопки удаления товара из корзины
+  indexElement: HTMLSpanElement - номер товара в корзине
+
+  set index(value: number) - сеттер, устанавливающий номер товара в корзине
+}
+```
+
+```
+class CardCatalog {
+  constructor(container: HTMLElement, actions?: ICardActions)
+
+  container: HTMLElement - DOM-элемент компонента
+  actions?: ICardActions
+  categoryElement: HTMLSpanElement - DOM-элемент категории товара
+  imageElement: HTMLImageElement - DOM-элемент изображения товара
+
+  set category(value: string) - сеттер, устанавливающий категорию товара
+  set image(value: string) - сеттер, устанавливающий изображение товара
+}
+```
+
+```
+class CardPreview {
+  constructor()
+
+  container: HTMLElement - DOM-элемент компонента
+  actions?: ICardActions
+  descriptionElement: HTMLParagraphElement - DOM-элемент описания товара
+  addButtonElement: HTMLButtonElement - DOM-элемент кнопки добавления товара в корзину
+  categoryElement: HTMLSpanElement - DOM-элемент категории товара
+  imageElement: HTMLImageElement - DOM-элемент изображения товара
+
+  set category(value: string) - сеттер, устанавливающий категорию товара
+  set image(value: string) - сеттер, устанавливающий изображение товара
+  set price(value: string) - сеттер, устанавливающий стоимость товара
+}
+```
+
+```
+class FormBasket {
+  constructor(events: IEvents, container: HTMLElement, actions?: ICardActions)
+
+  container: HTMLElement - DOM-элемент компонента
+  events: IEvents - события-слушатели
+  actions?: ICardActions
+  basketElement: HTMLElement - DOM-элемент корзины
+  submitButtomElement: HTMLButtonElement - кнопка подтверждения заказа
+  totalElement: HTMLSpanElement - DOM-элемент общей стоимости заказа
+
+  set basket(items: HTMLElement[]) - сеттер, устанавливающий список заказанных товаров
+  set total(value: string) - сеттер, устанавливающий сумму заказа
+  setButtonNext(isDisabled: boolean) - метод, отвечающий за возможность перехода на следующий этап оформления заказа
+}
+```
+
+```
+class FormContacts {
+  constructor(events: IEvents, container: HTMLElement, actions?: ICardActions)
+
+  container: HTMLElement - DOM-элемент компонента
+  events: IEvents - события-слушатели
+  actions?: ICardActions
+  emailElement: HTMLInputElement - DOM-элемент поля формы с электронной почтой
+  phoneELement: HTMLInputELement - DOM-элемент поля формы с номером телефона
+
+  set email(value: string) - сеттер, устаналивающий электронную почту покупателя
+  set phone(value: string) - сеттер, устаналивающий номер телефона покупателя
+}
+```
+
+```
+class FormOrder {
+  constructor(events: IEvents, container: HTMLElement, actions?: ICardActions)
+
+  container: HTMLElement - DOM-элемент компонента
+  events: IEvents - события-слушатели
+  actions?: ICardActions
+  cardPay: HTMLButtonElement - DOM-элемент поля формы с безналичной оплатой
+  cashPay: HTMLButtonElement - DOM-элемент поля формы с наличной оплатой
+  addressElement: HTMLInputElement - DOM-элемент поля формы с адресом
+
+  setCash() - метод, отвечающий за выбор способа оплаты наличными
+  setCard() - метод, отвечающий за выбор способа оплаты картой
+}
+```
+
+```
+class FormSuccess {
+  constructor(events: IEvents, container: HTMLELement)
+
+  container: HTMLElement - DOM-элемент компонента
+  events: IEvents - события-слушатели
+  descriptionElement: HTMLParagraphElement - DOM-элемент стоимости заказа
+  newOrderButton: HTMLButtonElement - DOM-элемент кнопки оформления нового заказа
+
+  set totalPrice - сеттер, устаналивающий стоимость заказа
+}
+```
