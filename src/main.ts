@@ -3,10 +3,19 @@ import { Basket } from './components/models/basket';
 import { Catalog } from './components/models/catalog';
 import { Buyer } from './components/models/buyer';
 import { apiProducts } from './utils/data';
-import { API_URL } from './utils/constants'
+import { API_URL, CDN_URL } from './utils/constants'
 import { IItemResponse, IProduct } from './types';
 import { Api } from './components/base/Api';
 import { APIServer } from './components/models/APIServer';
+import { ViewHeader } from './components/view/ViewHeader';
+import { EventEmitter } from './components/base/Events';
+import { Card } from './components/view/Card';
+import { validationErrors, IBuyer } from './types';
+import { cloneTemplate, ensureElement } from './utils/utils';
+import { CardBasket } from './components/view/CardBasket';
+import { CardPreview } from './components/view/CardPreview';
+import { CardCatalog } from './components/view/CardCatalog';
+import { ViewGallery } from './components/view/ViewGallery';
 
 const checkClassCatalog = new Catalog()
 const checkClassBasket = new Basket()
